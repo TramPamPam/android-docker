@@ -34,7 +34,8 @@ ENV ANDROID_PLATFORM_VERSION 25
 ENV ANDROID_BUILD_TOOLS_VERSION 25.0.3
 ENV ANDROID_EXTRA_PACKAGES "build-tools;25.0.2" "build-tools;25.0.1" "build-tools;25.0.0"
 ENV ANDROID_REPOSITORIES "extras;android;m2repository" "extras;google;m2repository"
-RUN android-accept-licenses "sdkmanager --verbose \"platform-tools\" \"platforms;android-$ANDROID_PLATFORM_VERSION\" \"build-tools;$ANDROID_BUILD_TOOLS_VERSION\" $ANDROID_EXTRA_PACKAGES $ANDROID_REPOSITORIES"
+ENV ANDROID_CONSTRAINT_PACKAGES "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2" "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.1" "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0"
+RUN android-accept-licenses "sdkmanager --verbose \"platform-tools\" \"platforms;android-$ANDROID_PLATFORM_VERSION\" \"build-tools;$ANDROID_BUILD_TOOLS_VERSION\" $ANDROID_EXTRA_PACKAGES $ANDROID_REPOSITORIES $ANDROID_CONSTRAINT_PACKAGES"
 
 # Install upload-apk helper
 RUN npm install -g xcode-build-tools
