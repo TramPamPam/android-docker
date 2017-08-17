@@ -31,7 +31,7 @@ ENV ANDROID_EXTRA_PACKAGES "build-tools;25.0.2" "build-tools;25.0.1" "build-tool
 ENV ANDROID_REPOSITORIES "extras;android;m2repository" "extras;google;m2repository"
 ENV ANDROID_CONSTRAINT_PACKAGES "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2" "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.1" "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0"
 ENV ANDROID_EMULATOR_PACKAGE "system-images;android-$ANDROID_PLATFORM_VERSION;google_apis;arm64-v8a"
-RUN android-accept-licenses "sdkmanager --verbose \"platform-tools\" \"platforms;android-$ANDROID_PLATFORM_VERSION\" \"build-tools;$ANDROID_BUILD_TOOLS_VERSION\" $ANDROID_EXTRA_PACKAGES $ANDROID_REPOSITORIES $ANDROID_CONSTRAINT_PACKAGES $ANDROID_EMULATOR_PACKAGE"
+RUN android-accept-licenses "sdkmanager --verbose \"platform-tools\" \"emulator\" \"platforms;android-$ANDROID_PLATFORM_VERSION\" \"build-tools;$ANDROID_BUILD_TOOLS_VERSION\" $ANDROID_EXTRA_PACKAGES $ANDROID_REPOSITORIES $ANDROID_CONSTRAINT_PACKAGES $ANDROID_EMULATOR_PACKAGE"
 RUN android-avdmanager-create "avdmanager create avd --package \"$ANDROID_EMULATOR_PACKAGE\" --name test --abi \"google_apis/arm64-v8a\""
 
 # Fix for emulator detect 64bit
