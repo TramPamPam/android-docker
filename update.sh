@@ -14,7 +14,7 @@ declare -A extraPackages=(
 )
 
 for variant in "${variants[@]}"; do
-  for type in 'default' 'emulator' 'ndk' 'stf-client' 'jdk14'; do
+  for type in 'default' 'emulator' 'ndk' 'stf-client' 'jdk15'; do
     template="Dockerfile.template"
     if [ "$type" != "default" ]; then
       dir="$variant-$type"
@@ -46,8 +46,8 @@ for variant in "${variants[@]}"; do
         /##<stf-client>##/,/##<\/stf-client>##/d;
       '
     fi
-	if [ "$type" = "jdk14" ]; then
-		jdkVersion="14"
+	if [ "$type" = "jdk15" ]; then
+		jdkVersion="15"
 	else
 		jdkVersion="8"
 	fi

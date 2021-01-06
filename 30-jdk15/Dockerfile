@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:groovy
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # hadolint ignore=DL3008
@@ -7,7 +7,7 @@ RUN apt-get update \
     expect \
     locales \
     nano \
-    openjdk-14-jdk \
+    openjdk-15-jdk \
     unzip \
     curl \
   && rm -rf /var/lib/apt/lists/*
@@ -43,7 +43,7 @@ RUN npm -g install xcode-build-tools
 
 # Install the SDK
 # https://developer.android.com/studio#downloads
-ENV ANDROID_CMDLINE_TOOLS https://dl.google.com/android/repository/commandlinetools-linux-6609375_latest.zip
+ENV ANDROID_CMDLINE_TOOLS https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip
 # hadolint ignore=DL3003
 RUN ( \
     cd /opt \
